@@ -1,0 +1,7 @@
+-- 1. 이름이 null 인 경우에는 집계하지 않는다
+-- 2. 중복되는 이름은 하나로 합친다.
+-- 3. 그후 보호소에들어온 동물의 수 집계하기
+SELECT count(distinct name) as `count` from animal_ins  where name is not null;
+
+-- comment
+-- distinct 는 컬럼 바로 앞에서 붙여서 두는것.

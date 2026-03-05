@@ -1,0 +1,45 @@
+SELECT
+    p.name,
+    p.price
+FROM
+    products p
+LEFT JOIN
+    orders o ON p.product_id = o.product_id
+WHERE
+    p.category = '전자기기' AND o.order_id IS NULL;
+
+SELECT
+    u.name,
+COUNT(o.order_id) AS order_count
+FROM
+    users u
+LEFT JOIN
+    orders o ON u.user_id = o.user_id
+GROUP BY
+    u.user_id, u.name
+ORDER BY
+    u.name;
+
+
+SELECT
+    u.name,
+    u.email
+FROM
+    orders o
+RIGHT JOIN
+    users u ON o.user_id = u.user_id
+WHERE
+    o.order_id IS NULL;
+
+
+SELECT
+    u.name AS user_name,
+    p.name AS product_name
+FROM
+    users u
+LEFT JOIN
+    orders o ON u.user_id = o.user_id
+LEFT JOIN
+    products p ON o.product_id = p.product_id
+ORDER BY
+    user_name, product_name;

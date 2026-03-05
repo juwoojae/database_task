@@ -43,3 +43,49 @@ LEFT JOIN
     products p ON o.product_id = p.product_id
 ORDER BY
     user_name, product_name;
+
+select 
+	e.name as name,
+    e.employee_id,
+    m.name as manager_name,
+    e.manager_id
+from employees e join employees m on e.manager_id = m.employee_id
+where m.name = '최과장'
+
+create table materials (
+	material varchar(10) primary key
+);
+
+insert into materials (material) values
+('Cotton'),
+('Silk');
+
+select * from materials;
+
+select 
+	concat('기본 티셔츠-', c.color, '-', s.size, '-', m.material) as product_full_name,
+    s.size,
+    c.color,
+    m.material
+from sizes s cross join colors c
+cross join materials m;
+
+
+select
+	u.name as customer_name,
+    p.name as product_name,
+    o.order_date,
+    o.quantity
+from orders o join users u on o.user_id = u.user_id
+join products p on o.product_id = p.product_id
+where u.name = '네이트'
+order by o.order_date desc; 
+
+select
+	u.name as customer_name,
+    sum(p.price*o.quantity) as total_spent
+from orders o join users u on o.user_id = u.user_id
+join products p on o.product_id = p.product_id
+where u.address like '서울시%'
+group by u.name
+order by total_spent desc;

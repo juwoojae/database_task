@@ -1,0 +1,4 @@
+-- 1. name null 제외하기
+-- 2. order by 는 같은 조건의 열을 하나로 합쳐준다
+-- 3. having 은 그룹핑의 조건문,  주로 집계함수랑쓰인다
+SELECT name, count(*) as `count` from animal_ins where name is not null group by name having count(*) >=2 order by name;

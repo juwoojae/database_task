@@ -43,6 +43,7 @@ LEFT JOIN
     products p ON o.product_id = p.product_id
 ORDER BY
     user_name, product_name;
+    user_name, product_name;
 
 select 
 	e.name as name,

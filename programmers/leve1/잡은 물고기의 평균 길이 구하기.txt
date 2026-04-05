@@ -1,0 +1,6 @@
+-- 1. case 문을 select 절내부에 사용해서 분기하기
+-- case when then else 
+-- 2. 소수점을 나타낼때는 round 사용하기
+SELECT 
+    round(avg(CASE WHEN LENGTH IS NULL THEN 10 ELSE LENGTH END),2) as AVERAGE_LENGTH
+FROM FISH_INFO;
